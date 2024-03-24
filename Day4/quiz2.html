@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section:nth-child(2) {
+            color: yellow;
+        }
+
+        article~section {
+            color: red;
+        }
+
+        div .blueBorder {
+            color: blue;
+        }
+
+        article>span~span+span {
+            color: blue;
+        }
+
+
+        article>span~span {
+            color: green;
+        }
+
+        div.content {
+            color: pink;
+        }
+
+        div .content {
+            color: yellow;
+        }
+
+        nav:nth-child(2)>article>div:nth-child(2){
+            color:darkred;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Q.2 -->
+    <body>
+        <article>
+            <div>Emerald</div>
+            <div>Jade</div>
+        </article>
+        <nav>
+            <article>
+                <div>Amber</div>
+                <div>Beryl</div>
+                <div>gypsum</div>
+            </article>
+        </nav>
+        <nav>
+            <article>
+                <div>Hum</div>
+                <div>Jasper</div>
+                <div>gypsum</div>
+            </article>
+        </nav>
+    </body>
+
+    <!-- Q.3 -->
+    <!-- <div>
+        <div class="content">
+            Hello
+        </div>
+    </div> -->
+
+    <!-- Q.4 -->
+    <!-- <article>
+            <span>a</span>
+            <span>b</span >
+            <p>c</p>
+            <span>d</span>
+            <span>e</span>
+            <p>f</p>
+            <span>g</span>
+        </article> -->
+
+
+
+    <!-- <div>
+        <section class="blueBorder">My Aritcle</section>
+        <article class="blueBorder">My Aritcle</article>
+        <section class="blueBorder">My Aritcle</section>
+        
+        <header>
+            <section>Second Section</section>
+            <article>
+                <section class="blueBorder">Third Section</section>
+                <section class="blueBorder">Third Section</section>
+                <section class="blueBorder">Third Section</section>
+            </article>
+            <section>Second Section</section>
+        </header>
+    </div> -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function rowEdit(self, id){
+            $('#hid_action').attr("value","edit");
+            $('#hid_id').val(id);
+            $(self).parent().parent().children().each((ind,ele)=>{
+                $('#'+$(ele).attr("for")).val(ele.textContent);
+            })
+            $('#btn_click').val("Edit");
+            console.log($('#hid_id').val());
+        }
+
+        function rowDelete(self, id){
+            $('#hid_action').attr("value","del");
+            $('#hid_id').val(id);
+            $('#form_id').submit();
+        }
+    </script>
+</head>
+<body>
+    <form id="form_id" action="/post" method="post">
+        <input type="hidden" id="hid_action" name="hid_action" value="add">
+        <input type="hidden" id="hid_id" name="hid_id">
+        Name:<input id="txt_name" type="text" name="txt_name">
+        Price:<input id="txt_price" type="text" name="txt_price">
+        Quantity:<input id = "txt_qty" type="text" name="txt_qty">
+        <input type="submit" id='btn_click' name="btn_click" value="Add">
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < prods.length; i++){%>
+                    <tr>
+                        <th for="txt_name"><%= prods[i].name %></th>
+                        <th for="txt_price"><%= prods[i].price %></th>
+                        <th for="txt_qty"><%= prods[i].qty %></th>
+                        <th><input type="button" onclick="rowEdit(this, '<%= prods[i].id %>')" value="Edit"></input></th>
+                        <th><input type="button" onclick="rowDelete(this, '<%= prods[i].id %>')" value="Delete"></input></th>
+                    </tr>
+                <%}%>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>

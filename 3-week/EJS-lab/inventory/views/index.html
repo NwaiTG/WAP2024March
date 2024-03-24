@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function rowEdit(self, prod_id){
+            console.log(self, prod_id);
+            let selectedRow = $(self).parent().parent();
+            selectedRow.children().each(function(idx,ele){
+                let child = $(ele);
+                let content = child.html().trim();
+                let itemId = child.attr('for');
+                $('#'+itemId).val(content);
+                console.log(child, content, itemId);
+            });
+            //change hidden data
+            $('input[name="hid_action"]').val('edit');
+            $('input[name="hid_prod_id"]').val(prod_id);
+            // change btn name to 'Edit'
+            $('#btn_action').html('Edit');
+            $('#btn_action').css('background-color','blue');
+            console.log(selectedRow);
+        }
+
+        function rowDelete(self, prod_id){
+            console.log(prod_id);
+            //change hidden data
+            $('input[name="hid_action"]').val('delete');
+            $('input[name="hid_prod_id"]').val(prod_id);
+
+            self.closest('form').submit(); // Submit the form containing the button           
+        }
+    </script>
+</head>
+<body>
+    <form action="/postData" method="post">
+        <input type="hidden" value="add" name="hid_action">
+        <input type="hidden" value="" name="hid_prod_id">
+        Name<input type="text" id="prodName" name="txt_name">
+        Price<input type="number" id="prodPrice" name="txt_price">
+        Quantity<input type="number" id="prodQty" name="txt_qty">
+        <input id="btn_action" type="submit" value="Add"></input>
+
+        <br><br>
+        <table style="width: 100%;text-align: left;">
+            <thead style="margin-left: 2px;">
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </thead>
+            <tbody>
+                <% for( let i = 0; i < products.length; i++ ) { %>
+                    <% let prod = products[i]; %>
+                    <tr>
+                        <td for='prodName'><%= prod.prodName %></td> 
+                        <td for='prodPrice'><%= prod.prodPrice %></td> 
+                        <td for="prodQty"><%= prod.prodQty %></td> 
+                        <td>
+                            <input type="button" value="Edit" onclick="rowEdit(this, '<%= prod.prodId %>')">
+                        </td>
+                        <td>
+                            <input type="button" value="Delete" onclick="rowDelete(this,'<%= prod.prodId %>')">
+                        </td>                    
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>

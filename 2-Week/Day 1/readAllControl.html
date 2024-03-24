@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function myclick(){
+            console.log("hello")
+            $("#idName").html($("#txtName").val());
+
+            $("#idGender").html($("input[name='option']:checked").val());
+
+            let skillsVal = $("[name='skills']:checked");
+            let sVal = "";
+            skillsVal.each(function(idx, ele){
+                if(sVal == "")
+                {
+                    sVal = sVal + ($(ele).val());
+                }else
+                {
+                    sVal = sVal + ", " + ($(ele).val());
+                }
+            })
+
+            $("#idSkill").html(sVal);
+
+            $("#idCountry").html($("[name='con']:selected").val());
+
+            let elements = $("[name='opt']:selected");
+            let values = "";
+            elements.each(function(idx, ele){
+                if(values !== "")
+                {
+                    values = values + ", " + ($(ele).val());
+                }else{
+                    values = values + ($(ele).val());
+                }
+                
+            })
+            
+            $("#idRandom").html(values);
+
+            $("#idDesc").html($("#txtArea").text());
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <div>
+            <label>Name</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="txtName" type="text">
+        </div><br>
+        <div>
+            <label>Gender</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input name="option" type="radio" value="male">male</input>
+            <input  name="option" type="radio" value="female">female</input>
+        </div><br>
+        <div>
+            <label>Skills</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input name="skills" type="checkbox" value="java">java</input>
+            <input name="skills" type="checkbox" value="javascript">javascript</input>
+        </div><br>
+        <div>
+            <label>Country</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <select name="singleSel">
+                <option name="con" value="usa">United States of America</option>
+                <option name="con" value="can">Canada</option>
+            </select>
+        </div><br>
+        <div>
+            <label>Random Options</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <select multiple name="mulSel">
+                <option name="opt" value="Option1">Option1</option>
+                <option name="opt" value="Option2">Option2</option>
+            </select>
+        </div><br>
+        <div>
+            <label>Description</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <textarea id="txtArea">Desciption</textarea><br>
+            <input type="button" value="Submit" onclick="myclick()">
+        </div>
+        <hr/><br>
+        <div style="font-weight: bold;">Selected Value</div><br>
+        <hr/>
+        <div>
+            <label>Name: </label><label id="idName"></label><br>
+            <label>Gender: </label><label id="idGender"></label><br>
+            <label>Skills: </label><label id="idSkill"></label><br>
+            <label>Country: </label><label id="idCountry"></label><br>
+            <label>Random Options: </label><label id="idRandom"></label><br>
+            <label>Description: </label><label id="idDesc"></label><br>
+        </div>
+</div>
+</body>
+</html>

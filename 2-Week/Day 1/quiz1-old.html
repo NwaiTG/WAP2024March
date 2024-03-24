@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            let objs = { tags: ['div', 'label'], text: ['Welcome', 'Blah Blah'], color: ['blue', 'orange'] }
+
+            let mainDiv = $("<Div></Div>")
+            let valTag = getAttrVal(objs, "tags");
+            let myMainTag = $("<label>Select Tag: </label>");
+            let myTagOpt = "";
+            if(valTag.length !== 0)
+                myTagOpt = "<select>";
+
+            for(let i = 0; i < valTag.length; i++){
+                myTagOpt = myTagOpt + "<Option name='opt'>" + valTag[i] + "</Option>"
+            }
+
+            if(myTagOpt !== "")
+                myTagOpt += "</select>";
+
+            myMainTag.append(myTagOpt);
+            mainDiv.append(myMainTag);
+            $('body').append(mainDiv).append("<br>");
+
+            let radDiv = $("<div></div>");
+            radDiv.append("<label>Select Text: </label>");
+            let radVal = getAttrVal(objs, "text");
+            for (let i = 0; i < radVal.length; i++) {
+                radDiv.append("<label>" + radVal[i] + "</label><input name='radio' type='radio'></input>");
+            }
+            $('body').append(radDiv).append("<br>");
+
+
+            let colDiv = $('<div></div>')
+            colDiv.append("<label>Select Color: </label>");
+            console.log(colDiv);
+            let colVal = getAttrVal(objs, "color");
+            let selTag = "";
+            if(colVal !== 0)
+            selTag = "<select>";
+            
+            let optTag = "";
+            for(let i = 0; i < colVal.length; i++){
+                optTag += "<option name='color'>" + colVal[i] + "</option>";
+            }
+            
+            if(optTag !== ""){
+                optTag += "</select>";
+            }
+
+            // comTag.append()
+            selTag += optTag;
+            colDiv.append(selTag);
+            $('body').append(colDiv).append("<br>");
+
+            $('body').append("<button onclick='myClick()'>myButton</button>")
+        })
+
+        function getAttrVal(obj, attr){
+            let vals = [];
+            for(let attrs in obj){
+                if(attrs == attr){
+                    vals = obj[attrs];
+                }
+            }
+            return vals;
+        }
+
+        function myClick(){
+            console.log("myButton");
+            let tagVal = $("[name='opt']:checked").val();
+
+            $("[name='radio']:checked").prev('label').text();
+
+            let displayVal = $("[name='radio']:checked").prev('label').text();
+
+            let col = $("[name='color']:checked").val();
+
+            let newlbl = "<" + tagVal + " style='color:" + col + "'>" + displayVal + "</" + tagVal + ">";
+            $('body').append(newlbl);
+
+        }
+        
+    </script>
+</head>
+<body>
+    <!-- <label>Select Color:</label>
+        <select>
+            <option name="comboCol">blue</option>
+            <option name="comboCol">orange</option>
+        </select> -->
+    <!-- <label style="fon">TEst</label> -->
+    <!-- <div>
+        <div>
+        <label>Select Tag:</label>
+        <select>
+            <option name="comboTag">div</option>
+            <option name="comboTag">label</option>
+        </select>
+        </div><br>
+        <div>
+            <label>Select Text:</label>
+            <label>Welcome</label><input type="radio" name="display"></input>
+            <label>Some Text</label><input type="radio" name="display"></input>
+        </div><br>
+        <div>
+        <label>Select Color:</label>
+        <select>
+            <option name="comboCol">blue</option>
+            <option name="comboCol">green</option>
+        </select>
+        </div><br>
+        <button onclick="myClick()">myButton</button><br>
+        <label id = "id-lblAns"></label>
+    </div> -->
+</body>
+</html>

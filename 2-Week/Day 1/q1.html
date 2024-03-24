@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Practice</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // Change Text: Use jQuery to change the text of the <h1> element to "Hello, World!" when a button is clicked.
+        // Hide/Show Element: Use jQuery to hide the <p> element when it is clicked and show it again when another button is clicked.
+        // Add CSS Class: Add a CSS class to the <h1> element when the page loads using jQuery.
+        // Animate Element: Use jQuery to animate the <h1> element (e.g., make it fade in or slide down) when the page loads.
+        // AJAX Request: Use jQuery to make an AJAX request to a JSON file and display the data on the page.
+        // Event Handling: Use jQuery to handle click events on multiple buttons and perform different actions based on which button is clicked.
+        $(document).ready(function() {
+            // Your jQuery code here
+            //1.
+            $("h1").text("Hello, world!");
+            $("h1").css("color", "green");
+            $("p").hide();
+        });
+        function clickme(){
+            $("p").show();
+        }
+    </script>
+</head>
+<body>
+    <h1>Hello, jQuery!</h1>
+    <p>This is a paragraph.</p>
+    <button onclick="clickme()">Click me</button>
+</body>
+</html>

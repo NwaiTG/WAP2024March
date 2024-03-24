@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        // let obj = [{ humidity: 20, speed: 30 }, { humidity: 10, speed: 40 }];
+    let obj = [{ color: "red", flower:"rose",plant:'Shrub' }, { color: "red", flower:"jinnia",plant:'shrub' }];
+    $(function(){
+        let mainDiv = $("<div></div>")
+        let selector = "<select multiple>"
+
+        let option = "";
+
+        for(let attr in obj[0]){
+                option += "<option name='opt'>" + attr + "</option>";
+        }
+
+        selector = selector + option + "</select>";
+        $('body').append(selector);
+        $('body').append("<button onclick='myclick()'>Submit</><br>")
+    })
+
+    function myclick(){
+        $("#mainDiv").remove();
+        let optEle = $("[name='opt']:selected");
+        let mainDiv = $("<div id='mainDiv'></div>")
+        let newTag = "";
+        optEle.each(function(idx, ele){
+            // get all option val
+            let allOpt = $("[name='opt']");
+            // loop option to get val
+            
+            allOpt.each(function(idx, element){
+                let valEle = getValByAttr(obj, element.textContent)
+                
+                newTag += "<div id='idDIV'><label>" + element.textContent + "</label><input type='text' value='" + valEle + "'/>";
+            })
+            newTag += "</div>"
+            // get val of obj with option val
+        })
+        
+        mainDiv.append(newTag);
+            $('body').append(mainDiv);
+    }
+
+    function getValByAttr(obj, search){
+        let val = "";
+        for(let attr in obj[0]){
+            if(attr == search)
+                val = obj[0][attr];
+        }
+        return val;
+    }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function changeAction(){
+            window.location.href="/req";
+            // $('#form_2').submit();
+            // $('#form_basic').attr("method", "get");
+            // $('#form_basic').attr("action", "/req");
+        }
+    </script>
+</head>
+<body>
+    <form action="/postReq" method="post" id="form_basic">
+        <!-- <button onclick="changeAction()">Submit</button> -->
+    </form>    
+
+    <form action="/req" method="get" id="form_2">
+        <!-- <button onclick="changeAction()">Submit</button> -->
+    </form>
+    <button onclick="changeAction()">Submit</button>
+</body>
+</html>

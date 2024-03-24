@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>        
+        .flex_container{
+            display: flex;
+            /* flex-direction: row; */
+            /* flex-wrap: wrap; */
+            gap: 20px;
+        }
+        .flex_container > div{
+            
+        }
+        .img{
+            width: 17em;
+            height: 9em;
+            max-width: 100%;
+            object-fit: cover;
+            /* z-index: -10; */
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        // Iman
+        $(document).ready(function(){
+
+       let idx = 0;
+        let timerid;
+        let array1 = [3,0,1,2]
+        let array2 = [2,3,0,1]
+        let array3 = [1,2,3,0]
+        let array4 = [0,1,2,3]
+
+        function startinterval(){
+            timerid = setInterval(function(){
+            $('#div1').html('<img id="img1" src="./images/'+array1[idx%4]+'.jpeg"/>')
+            $('#div2').html('<img id="img2" src="./images/'+array2[idx%4]+'.jpeg"/>')
+            $('#div3').html('<img id="img3" src="./images/'+array3[idx%4]+'.jpeg"/>')
+            $('#div4').html('<img id="img4" src="./images/'+array4[idx%4]+'.jpeg"/>')
+            idx++
+         },1000)
+        }
+
+        $(document).on('click', 'img', function(){
+            change_video($(this).attr("src"),$(this).attr("id"))
+
+            console.log($(this).attr("id"))
+        })
+
+         $('#container').mouseover(function(){
+           clearInterval(timerid)
+         });
+
+         $('#container').mouseout(function(){
+            startinterval()
+         })
+
+         startinterval()
+
+//        })
+
+
+
+        // NTG
+  //       $(document).ready(function(){
+                // img1 div
+                $("#img1_sub").hide();
+                $("#img1_vdo").hide();
+            });
+        
+        function change_video(vdo_path, img_id){
+            // console.log("#"+img_id, "#"+img_id+"_sub", "#"+img_id+"_vdo")
+            
+            $("#"+img_id).hide();
+            $("#"+img_id+"_sub").hide();
+            $("#"+img_id+"_sub").show();
+            $("#"+img_id+"_vdo").hide();
+
+            setTimeout(function(){
+                $("#"+img_id).hide();
+                $("#"+img_id+"_sub").hide();
+                $("#"+img_id+"_vdo").show();
+                $("#"+img_id+"_vdo").attr("src", vdo_path);
+                $("#"+img_id+"_vdo")[0].play();
+                
+            }, 3000)
+        }
+
+        function change_img(img_id){
+
+            $("#"+img_id).show();
+            // $("#"+img_id+"_sub").hide();
+            $("#"+img_id+"_vdo").hide();
+        }
+
+    </script>
+</head>
+<body>
+    <div id="container" class="flex_container">
+        <div id="div1">
+            <img id="img1" onclick="change_video('./videos/video1.mp4', 'img1')" class="img" src="./images/0.jpeg"></img>
+            <img style="object-fit: cover;" id="img1_sub" width="300px" src="./videos/img1_frame.png"></img>
+            <video id="img1_vdo" width="300px" onmousedown="change_img('img1')" controls>
+                <source src='./videos/video1.mp4' type='video/mp4'>
+            </video>            
+        </div>
+        <div id="div2">
+            <img id="img2" class="img" src="./images/1.jpeg">
+        </div>
+        <div id="div3">
+            <img id="img3" class="img" src="./images/2.jpeg">
+        </div>
+        <div id="div4">
+            <img id="img4" class="img" src="./images/3.jpeg">
+        </div>
+    </div>
+</body>
+</html>

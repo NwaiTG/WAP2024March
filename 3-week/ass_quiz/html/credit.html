@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/submitCard" method="post">
+        <div>
+            <input type="radio" name="rad" value="Master">Master Card</input>
+            <input type="radio" name="rad" value="Visa">Visa</input>
+        </div><br>
+        <label>Card Number</label>&nbsp;<input type="number" name="txt_card"><br>
+        <br>
+        <div>
+            <label>Expiration date</label>
+            <select name="opt_mth">
+                <option value="jan">Jan</option>
+                <option value="feb">Feb</option>
+            </select>
+            <select name="opt_yr">
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+            </select>
+        </div>
+        <input type="submit" name="SubmitOTP">
+    </form>
+</body>
+</html>

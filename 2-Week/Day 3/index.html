@@ -1,0 +1,45 @@
+"<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    let myArray = ['apple', 'grapes', 'pear'];
+
+    let idx = 0;
+    function timerFn(){
+        $('body').append("<p>" + myArray[0] + "</p>");
+        idx++;
+    }
+
+    let timerID = setInterval(function(){
+        console.log(idx);
+        if(idx == myArray.length - 1){            
+            idx = 0;
+        }
+        
+
+        $('body').append("<p>" + myArray[idx] + "</p>");
+        idx++;
+        
+    }, 1000);
+
+    // for(let i = 0; i < myArray.length; i++){
+    //     setTimeout(function(){
+    //         $('body').append("<div>" + myArray[i] + "</div>");
+    //     }, 1000);
+    // }
+
+    function stop(){
+        clearInterval(timerID);
+    }
+
+    
+</script>
+<body>
+    <button onclick="stop()">Stop</button>
+</body>
+</html>"

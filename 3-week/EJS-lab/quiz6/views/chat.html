@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function displayMsg(self){
+            console.log(self.value);
+            $('#id_form').attr("action", "/getmsgbyuser");
+            $('#id_form').submit();
+        }
+    </script>
+</head>
+<body>
+    <form id="id_form" action="/addmsg" method="post">
+        <p type="text" value="Hello <%=curr_user%>" style="text-align: left;margin-right: 0;"></p>
+        <select id="sel_user" onchange="displayMsg(this)" name="sel_user">
+                <% users.map(ch => { %>
+                    <option value="<%= ch %>" <%= ch.trim() === sel_user.trim() ? 'selected' : '' %>> <%= ch %> </option><br>
+                <% }) %>
+        </select>
+        <div id="div_msg" style="border: 1px solid black;width:500px;height: 300px;">
+            <!-- <div id="div_msgByName" style="height: 200px;"> -->
+                <% for(let i = 0; i < msg.length; i++) { %>
+                    <label> <%= msg[i] %> </label><br>
+                <% } %>
+            <!-- </div> -->
+            <input name="txt_msg" type="text">
+            <input type="submit">
+        </div>
+    </form>
+</body>
+</html>

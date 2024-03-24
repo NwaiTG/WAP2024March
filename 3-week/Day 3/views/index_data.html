@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%= data %>
+    <select>
+        <% for( let index = 0; index < data.length; index++ ) { %>
+            <option name=<%= index %> value=<%= data[index] %>><%= data[index] %></option>
+        <% } %>
+    </select>
+
+    <% for( let index = 0; index < data.length; index++ ) { %>
+        <input type="checkbox" name=<%= index %> value=<%= data[index] %>><%= data[index] %></input>
+    <% } %>
+
+    <br>
+    <ul>
+        <% for( let index = 0; index < data.length; index++ ) { %>
+            <li><%= data[index] %></li>
+        <% } %>
+    </ul>
+</body>
+</html>

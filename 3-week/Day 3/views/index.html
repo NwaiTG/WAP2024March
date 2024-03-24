@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- {form:{name:'Ram',skills:['java','javascript']}} -->
+    <% for(let key in form) { %>
+        <% if(Array.isArray(form[key])) { %>
+            <% for(let i = 0; i < form[key].length; i++) {%>
+                <input type="checkbox" name="chk"+key value=<%= form[key][i] %>><%= form[key][i]%></input> 
+            <% } %>
+        <% } else {%>
+            <div><%= form[key] %></div>
+        <% } %>
+
+    <% } %>
+</body>
+</html>

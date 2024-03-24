@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function myClick(){
+            let num1 = $("input[name='num1']").val();
+            let num2 = $("input[name='num2']").val();
+            let radVal = $("input[name='operation']:checked").val(); // get value Eg. sum, substract
+            let resVal = 0;
+
+            $("#lblError").hide().html("");
+
+            if(radVal == 'sum'){
+                console.log(num1, num2);
+                resVal = parseInt(num1) + parseInt(num2);
+            }
+            else if(radVal == 'substract'){
+                if(parseInt(num1) < parseInt(num2)){
+                    $("#lblError").html("Num1 must be greater than num2!!!").show();
+                    $("#lblError").css("color", "red");
+                }else{
+                    // $("#lblError").css("display", "none");
+                    console.log(num1, num2);
+                    resVal = parseInt(num1) - parseInt(num2);
+                }
+            }
+            else if(radVal == 'multiply'){
+                console.log(num1, num2);
+                resVal = parseInt(num1) * parseInt(num2)            
+            }
+            else if(radVal == 'division'){
+                if(parseInt(num2) == 0){
+                    $("#lblError").html("It is divided by 0!!").show();
+                    // $("#lblError").show();
+                    $("#lblError").css("color","red");
+                }else{
+                    resVal = parseInt(num1) / parseInt(num2)
+                }
+            }
+
+            $("#myAnswer").val(resVal);            
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <label id="lblError"></label>
+        <div>
+            <label>Num1: </label>
+            <input name="num1" type="text">
+        </div><br>
+        <div>
+            <label>Num2: </label>
+            <input name="num2" type="text">
+        </div><br>
+        <div id="myRadio">
+            <input id="r1" type="radio" name="operation" value="sum">Sum</input>
+            <input id="r2" type="radio" name="operation" value="substract">Subtract</input>
+            <input id="r3" type="radio" name="operation" value="multiply">Multiply</input>
+            <input id="r4" type="radio" name="operation" value="division">Division</input>
+        </div><br>
+        <div>
+            <label>Answer: </label>
+            <input type="text" id="myAnswer" value="0"></input>
+        </div><br>
+        <div>
+            <button onclick="myClick()">Submit</button>
+            <!-- <label id="myAnswer"></label> -->
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</body>
+</html>

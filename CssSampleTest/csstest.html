@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container{
+            display: flex;
+            justify-content: start;
+        }
+        .flex-container > div{
+            flex-flow: row wrap;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color: pink;">
+        <div style="display: flow-root; padding: 10px;">
+            <div style="float: left; width: 10px;">Embodied Health</div>
+            <div style="float: right; padding: 10px; border: 1px solid gray;">Contact</div>
+            <div style="float: right; padding: 10px;">Home</div>
+            <div style="float: right; padding: 10px;">About</div>
+        </div>
+        <div style="margin: 5px;display: flex;">
+            <img src="./images/boquet.jpeg" style="width: 250px;height: 250px; border-radius: 50%; object-fit: cover;">
+            <p>
+                <span style="font-size: 30px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">a safe space for healing</span>
+                <br>
+                Individual Therapy</p>  
+            <div style="display: flex; align-items: end;">
+            <img src="./images/boquet.jpeg" width="100px" style="position: absolute; top: 250px; right: 15px;"></div>
+        </div>
+    </div>
+</body>
+</html>

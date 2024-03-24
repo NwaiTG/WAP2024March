@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img{
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("#fit").hide();
+
+            $("#ava2").show();
+            $("#ava1").hide();
+            // $("#ava1").prop("visibility", "hidden");
+            $("#ava3").hide();
+            $("#div2").css("background-color","black");//background-color: black;
+            $("#div1").css("background-color","white");//background-color: black;
+            $("#div3").css("background-color","white");//background-color: black;
+        })       
+
+        function change_gender(){
+            let gender = $("input[name='avatar']:checked").val();
+            $("#fit").show();
+            if(gender === 'boy'){
+                boy();
+            }else{
+                girl();
+            }
+        }
+
+        function change_btm(){
+            let btm = $("[name='bottm']:checked").val();  //.val();
+            
+            if(btm === 'jeans'){
+                $("#jean").show();
+                $("#skirt").hide();
+            }else{
+                $("#jean").hide();
+                $("#skirt").show();
+            }            
+        }
+
+        function boy(){
+            $("#bottom-div").hide();
+            $("#dress-div").show();
+            $("#boy").show();
+            $("#pink").show();
+            $("#jean").show();
+
+            $("#girl").hide();
+            $("#skirt").hide();
+            $("#purple").hide();
+        }
+
+        function girl(){
+            $("#bottom-div").show();
+            $("#dress-div").show();
+            $("#pink").show();
+            $("#jean").show();
+
+            $("#girl").show();
+            $("#boy").hide();
+            $("#skirt").hide();
+            $("#purple").hide();
+        }
+
+        function left_move(){
+            console.log($("#div1").attr("background-color"));
+            // if($("#div1").attr("visibility"))
+            $("#ava1").show();
+            $("#div1").css("background-color", "black");
+            $("#div2").css("background-color", "white");
+            $("#div3").css("background-color", "white");
+            $("#ava2").hide();
+            $("#ava3").hide();
+        }
+
+        function left_right(){
+            $("#ava1").hide();
+            $("#div3").css("background-color", "black");
+            $("#div1").css("background-color", "white");
+            $("#div2").css("background-color", "white");
+            $("#ava2").hide();
+            $("#ava3").show();
+        }
+
+        function change_shirt(){
+            
+            // let shirt = $("select[name='color'] option:selected").val();
+            let shirt = $("option[name='color']:selected").val();
+            
+            if(shirt === 'pink'){
+                $("#pink").show();                
+                $("#purple").hide();
+            }
+            else
+            {
+                $("#purple").show();
+                $("#pink").hide();                
+            }            
+        }
+    </script>
+</head>
+<body>
+    <div id="img-big-Div" style="display: flex; flex-direction: row; align-content: center;align-items: center;gap: 20px;">
+        <div><button onclick="left_move()" style="align-items: center;"><</button></div>
+        <div style="align-items: center;">
+            <img id="ava1" src="./images/avatar1.jpeg">
+            <img id="ava2" src="./images/avatar2.jpeg">
+            <img id="ava3" src="./images/avatar3.jpeg">
+        </div>        
+        <div><button onclick="left_right()" style="align-items: center;">></button></div><br>
+    </div>
+    <div style="display: flex; flex-direction: row; align-content: center;align-items: center;gap: 3px;">
+            <div id="div1" style="border: 1px solid black; border-radius: 50%; width: 10px; height: 10px;"></div>
+            <div id="div2"  style="border: 1px solid black; border-radius: 50%; width: 10px; height: 10px;"></div>
+            <div id="div3" style="border: 1px solid black; border-radius: 50%; width: 10px; height: 10px;"></div>
+    </div>
+    <div id="ava-div">
+        <p>Create Avatar</p>
+        <label>Avatar</label>
+        <input type="checkbox" onclick="change_gender()" name="avatar" value="boy"></input><label>Boy</label>
+        <input type="checkbox" onclick="change_gender()" name="avatar" value="girl"></input><label>Girl</label>
+        <div id="fit" style="display: flex;flex-direction: row;gap: 10px;">
+            <div id="dress">
+                <div id="dress-div">
+                    <label>Dress Color</label>
+                    <select onchange="change_shirt()">
+                    <!-- <select> -->
+                        <option name="color" onclick="change_shirt()" value="pink">Pink</option>
+                        <option name="color" onclick="change_shirt()" value="purple">Purple</option>
+                    </select>
+                </div>
+                <div id="bottom-div">
+                    <label>Bottom Wear</label>
+                    <input type="radio" onclick="change_btm()" name="bottm" value="jeans"/><label>Jeans</label>
+                    <input type="radio" onclick="change_btm()" name="bottm" value="skirt"/><label>Skirt</label>
+                </div>
+            </div>            
+            <div id="img-div">
+                <img id="boy" class="img" src="./images/boy.jpeg">
+                <img id="girl" class="img" src="./images/girl.jpeg">
+                <img id="pink" class="img" src="./images/pink.jpeg">
+                <img id="purple" class="img" src="./images/purple.avif">
+                <img id="jean" class="img" src="./images/jean.jpg">
+                <img id="skirt" class="img" src="./images/long-skirt.jpg">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

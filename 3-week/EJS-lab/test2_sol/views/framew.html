@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- { 'Core Java': 10, 'Java Build Tools': [ 'Apache', 'SonaType' ] } -->
+    <form action="/chooseFW" method="post">
+        <h3>Rate Skills</h3>
+        <% for(let key in data){ %>
+            <label name="lb_name"> <%= key %> </label>
+            <% if(Array.isArray(data[key])){ %>
+                <select name="sel_<%=key%>">
+                    <% for(let ele of data[key]) { %>
+                        <option><%= ele %></option>
+                    <% } %>
+                </select><br><br>
+            <% } else { %>
+                <input type="text" name="txt_name" value="<%= data[key] %>"><br>
+            <% } %>            
+        <% } %>
+        <input type="submit">
+    </form>
+</body>
+</html>

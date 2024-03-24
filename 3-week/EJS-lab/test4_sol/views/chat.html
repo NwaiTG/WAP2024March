@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- var list = {
+        Personal: {name:'Ram', alias: 'Lakshman', age: 32 },
+        Preferences: [{ color: 'blue', theme: 'Azure' },
+                    { color: 'yellow', theme: 'Imagination' }]} -->
+    <form action="/post" method="post">
+        <% for(let key in list){ %>
+            <h2><%= key %></h2>
+            <% if(key === 'Personal'){ %>
+                <% for(let ele in list[key]){ %>
+                    <label for="<%= ele %>"><%= ele %></label>
+                    <input id="<%= ele %>" name="<%= ele %>" value="<%= list[key][ele] %>" type="text"><br>
+                <% } %>
+            <% } else if(key === 'Preferences'){ %>
+                <h3>Colors:</h3>
+                <label>
+                    <% list[key].map(ele => { %>
+                        <%= ele.color %> 
+                    <% }) %>
+                </label><br>
+                <h3>Themes:</h3>
+                <% list[key].map(ele => { %>
+                    <label><%= ele.theme %></label><br>
+                <% }) %>
+            <% } %>
+        <% } %>
+        <input type="submit">
+    </form>
+</body>
+</html>

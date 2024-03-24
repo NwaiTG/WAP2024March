@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flover{
+            border: 1px solid orange;padding: 20px;width: 150px;border-radius: 20px;
+        }
+        .img{
+            width: 80px; height: 100px;
+        }
+        .img:hover{
+
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        let obj = [{ flavor: 'Pike Place', price: '43.04',checked:true }, { flavor: 'Pumpkin spice', price: '52.08' }]
+
+        $(function(){
+            $("#imgId2").hide();
+            $("#lblOrd").hide();
+            let mainDiv = $("<br><div style='display: flex; flex-direction: row;gap:10px'></div>")
+            let childDiv = "";
+            for(let i = 0; i < obj.length; i++){
+                // let childDiv = "<div>";
+                childDiv = "<div class='flover'><input name='flover' onclick='chooseFla()' type='radio' value='" + obj[i]['flavor'] + "'></input><label>" + obj[i]['flavor'] + "</label><br><label>" + obj[i]['price'] + "</label>";
+                mainDiv.append(childDiv);
+            }
+
+            $('body').append(mainDiv);
+
+            $('body').append("<br><div><label>Quantity</label><select><option name='qty'>24 Count (pack of 4)</option><option name='qty'>10 Count (pack of 6)</option></select>&nbsp;&nbsp;<button onclick='checkout()'>Checkout</button></div>");
+        })
+
+        function checkout(){
+            let fla = $("[name='flover']:checked").val();
+            let qty = $("[name='qty']:selected").val();
+            
+            $("#lblqty").text(qty + " of " + fla).attr("font-weight","bold");
+            $("#lblqty").show();
+            $("#lblOrd").show();
+        }
+
+        function chooseFla(){
+            let fla = $("[name='flover']:checked").val();
+            if(fla == 'Pike Place'){
+                $("#imgId1").show();
+                $("#imgId2").hide();
+            }
+            else{
+                $("#imgId2").show();
+                $("#imgId1").hide();
+            }
+        }
+
+        function largerMe(){
+            let fla = $("[name='flover']:checked").val();
+            if(fla !== 'Pike Place'){
+                $('body').append("<img id='imgId4' style='width: 120px; height: 150px; position:absolute; top: 70px; left:100px; z-index: 3' src='https://m.media-amazon.com/images/I/81C7ZQHz+4L._SX679_.jpg'/>")
+            }
+            else{
+                $('body').append("<img id='imgId3' style='width: 120px; height: 150px; position:absolute; top: 70px; left:100px; z-index: 3' src='https://m.media-amazon.com/images/I/814-cZVGojL._SX679_PIbundle-4,TopRight,0,0_AA679SH20_.jpg'/>")
+            }
+        }
+
+        function removeMe(){
+            let fla = $("[name='flover']:checked").val();
+            if(fla == 'Pike Place'){
+                $("#imgId3").remove();
+            }
+            else
+                $("#imgId4").remove();
+        }
+            
+    </script>
+</head>
+<body>
+    <div>
+        <label id="lblOrd">Order </label><label id="lblqty" style="visibility: visible;"></label><br>
+        
+        <img id='imgId1' onmouseover="largerMe()" onmouseleave="removeMe()" style="width: 80px; height: 100px;" src="https://m.media-amazon.com/images/I/814-cZVGojL._SX679_PIbundle-4,TopRight,0,0_AA679SH20_.jpg"/>
+        <img id='imgId2' onmouseover="largerMe()" onmouseleave="removeMe()" style="width: 80px; height: 100px;" src="https://m.media-amazon.com/images/I/81C7ZQHz+4L._SX679_.jpg"/>
+    </div>
+    <div id="flv-div-Id">Pick Flavor</div><dr>
+    <div></div>
+    
+</body>
+</html>

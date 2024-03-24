@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+
+        // function displayDIV(){
+        //     alert($('#id_name').val().trim().length);
+        //     event.defaultPrevented();
+        //     if($('#id_name').val().trim().length > 0){
+        //         $('#id_div').show();
+        //     }else{
+        //         $('#id_div').hide();
+        //     }
+        // }
+    </script>
+</head>
+<body>
+    <form action="/post" method="post">
+        Name<input id="id_name" type="text" name="txt_name">
+        Description <textarea name="txt_desc">
+        </textarea>
+        Country<select name="sel_cty">
+            <option value="USA">USA</option>
+            <option value="other">Other</option>
+        </select>
+        Room Preferences
+        <select name="sel_ref" multiple>
+            <option value="Single">Single</option>
+            <option value="Share">Shared</option>
+        </select>
+        <div>Gender
+            <input type="radio" value="Male" name="rad_gen">Male</input>
+            <input type="radio" value="Female" name="rad_gen">Female</input>
+        </div>
+        Diet Restriction
+        <input type="checkbox" value="Vegan" name="chk_vegan">Vegan</input>
+        <input type="checkbox" value="Nut" name="chk_nut">Nut Allergy</input>
+        <button name="btn_my" onclick="displayDIV()">My Button</button>
+        <hr/>
+        
+        <h2>Selected Values</h2>
+        <label><%= obj.name %></label><br>
+        <label><%= obj.desc %></label><br>
+        <label><%= obj.cty %></label><br>
+        <label><%= obj.pref %></label><br>
+        <label><%= obj.gender %></label><br>
+        <label><%= obj.diet %></label><br>
+    </form>
+</body>
+</html>

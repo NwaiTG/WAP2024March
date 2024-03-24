@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        option:empty {
+            background-color: white;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        // let objs = ['rose', 'lily', 'daffodil'];
+
+        function click1(){
+            let selVals = $("select[name='source'] option:selected");
+            let desEle = $("select[name='dest'] option:empty")
+            // let desEle = $("[name='dest']").filter(function() {
+            //     return $(this).text() === "";
+            // });
+
+            desEle.each(function(idx,ele){
+                console.log($(ele).attr("id"));
+            })
+            
+            for(let i = 0; i < selVals.length;i++){
+
+                desEle[i].innerText = selVals[i].textContent;
+                // desEle[i].setAttribute("","selected");
+            }
+            $("select[name='source'] option:selected").each(function(idx,ele){
+                $(ele).text("");
+            })
+
+            $("select[name='source'] option:selected").prop("selected",false)
+        }
+
+        function click2(){
+            let sourceVals = $("select[name='source'] option").filter((index, ele) => {
+            return $(ele).text() !== "";
+            });
+            let destVals = $("select[name='dest'] option:empty");
+            sourceVals.each(function(idx, ele) {
+                // alert(idx);
+                $(destVals[idx]).text($(ele).text());
+            });
+            $("select[name='source'] option").each(function(idx,ele){
+                    $(ele).text("");
+            })
+        }
+
+        function click3() {
+            let desEle = $("select[name='dest'] option:selected");
+            let selVals = $("select[name='source'] option:empty");
+            
+            for(let i = 0; i < desEle.length;i++){
+
+                selVals[i].innerText = desEle[i].textContent;
+            }
+            $("select[name='dest'] option:selected").each(function(idx,ele){
+                $(ele).text("");
+            })
+            $("select[name='dest'] option:selected").prop("selected",false)
+    }
+
+    function click4() {
+        let delVals = $("select[name='dest'] option").filter((index, ele) => {
+            return $(ele).text() !== "";
+        });
+        let sourceVals = $("select[name='source'] option:empty");
+        delVals.each(function(idx, ele) {
+            // alert(idx);
+            $(sourceVals[idx]).text($(ele).text());
+        });
+        $("select[name='dest'] option").each(function(idx,ele){
+                $(ele).text("");
+        })
+    }
+
+
+
+
+        // function click3(){
+            
+        //     let desVals = $("[name='dest']:selected");
+        //     let sourEle = $("[name='source']option");
+        //     console.log(sourEle);
+        //     for(let i = 0; i < desVals.length;i++){
+        //         console.log("Here is", sourEle[i].innerText);
+        //         if(sourEle[i].innerText == ""){
+        //             console.log("No value", sourEle[i].innerText);
+        //             sourEle[i].innerText = desVals[i].textContent;
+        //         }                
+        //         // desEle[i].setAttribute("","selected");
+        //     }
+        //     $("[name='dest']:selected").remove();
+        // }
+    </script>
+</head>
+<body>
+    <div>
+        <select multiple name="source">
+            <option name="source" id="1">rose</option>
+            <option name="source" id="2">lily</option>
+            <option name="source" id="3">daffodil</option>
+        </select>
+    </div>
+    <div>
+        <button onclick="click1()">></button>
+        <button onclick="click2()">>></button>
+        <button onclick="click3()"><</button>
+        <button onclick="click4()"><<</button>
+    </div>
+    <div>
+        <select multiple name="dest" id="selDesc">
+            <option name="dest" id="1"></option>
+            <option name="dest" id="2"></option>
+            <option name="dest" id="3"></option>
+        </select>
+    </div>
+</body>
+</html>

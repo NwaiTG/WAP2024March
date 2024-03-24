@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container {
+        display:flex;flex-direction:row;text-align:left
+        }
+        .flex-container > div {
+        padding: 10px; 
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        let list = [{ id: 2, fname: 'John', lname: 'Doe', img: '/images/boquet.jpeg' },
+        { id: 4, fname: 'Maharishi', lname: 'Mahesh', img: '/images/chrysanthumum.jpeg' },
+        { id: 3, fname: 'Arya', lname: 'Batt', img: '/images/pinkRose.jpeg' },
+        { id: 1, fname: 'Aakash', lname: 'Chatterji', img: '/images/purple.jpeg' }]
+
+        $(function(){
+            let mainDIV = $("<div></div>")      
+            mainDIV.append("<button id='btnSort' onclick='myclick(true)'>Sort</button>");
+            let flexDIV = $("<div id='flexDIV' class='flex-container'></div>")
+            // let childDIV = $("<div></div>");
+            let mainTag = "";
+            let id = "";
+
+            for(let i = 0; i < list.length; i++){
+                mainTag = "<div>";
+                let imgTag = "";
+                let fNTag = "";
+                let lNTag = "";
+                for(let attr in list[i]){                  
+                    
+                    if(attr == 'img'){
+                        imgTag = "<div id='img" + i + "'><img style='height:100px; width:120px' src='" + list[i][attr] + "'/></div>";
+                    }
+                    if(attr=='fname'){
+                        fNTag = "<p>" + list[i][attr] + "</p>";
+                    }
+                    if(attr=='lname'){
+                        lNTag = "<p>" + list[i][attr] + "</p>";
+                    }
+                    if(attr=='id'){
+                        id = list[i][attr];
+                    }                    
+                }
+                mainTag = imgTag + "<div id='" + i + "'>" + fNTag + lNTag + "<button id='" + i + "' onclick='deleteAll(this)'>Delete</button>" + "</div>";
+                // childDIV.append(mainTag);
+                flexDIV.append(mainTag);
+            }
+            mainDIV.append(flexDIV);
+            $('body').append(mainDIV);
+        })
+
+        function deleteAll(self){
+            let id = self.id;
+            let divID = "#"+id;
+            let imgID = "#img"+id;
+            $(divID).remove();
+            $(imgID).remove();
+        }
+
+        function myclick(bool){
+            if(bool){
+                list.sort((a, b) => a.id - b.id);
+            }
+            else{
+                list.sort((a, b) => b.id > a.id);
+            }               
+
+            let flexDIV = $('#flexDIV');
+            flexDIV.attr("class","flex-container");
+            flexDIV.empty(); // Clear the existing elements
+
+            for(let i = 0; i < list.length; i++){
+                let imgTag = "<div id='img" + i + "'><img style='height:100px; width:120px' src='" + list[i].img + "'/></div>";
+                let fNTag = "<p>" + list[i].fname + "</p>";
+                let lNTag = "<p>" + list[i].lname + "</p>";
+
+                mainTag = imgTag + "<div id='" + i + "'>" + fNTag + lNTag + "<button id='" + i + "' onclick='deleteAll(this)'>Delete</button>" + "</div>";
+
+                flexDIV.append(mainTag);
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

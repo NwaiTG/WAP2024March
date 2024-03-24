@@ -1,0 +1,157 @@
+.main-div{
+    background-color: black;
+    width: 100%;
+}
+.header-text{
+    color: white;
+    /* font-weight: bold; */
+    font-size: 23px;
+}
+.flex-main-container{
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    /* width: 30%; */
+    /* margin: 100px; */
+}
+.flex-container1{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    width: 30%;
+    margin: 70px;
+}
+.flex-container-footer{
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    margin: 70px;
+    position: absolute;
+    bottom: 160px;
+    /* padding: 0; */
+
+}
+.flex-container-footer > div{
+    font-size: 19px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    color: white;
+}
+
+.footer{
+    font-size: 19px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    float: right;
+    color: white;
+    position: relative;
+    bottom: 69px;
+    margin-right:145px;
+}
+.flex-container1 > div{
+    color: white;
+    padding: 10px;
+}
+.grid-container1{
+    display: grid;
+    grid-template-columns: 35px 400px;
+    text-align: left;
+    column-gap: 7px;
+    row-gap: 20px;
+    justify-content: center;
+}
+.grid-container2{
+    display: grid;
+    grid-template-columns: auto auto;
+    /* text-align: left; */
+    column-gap: 7px;
+    row-gap: 20px;
+    /* justify-content: center; */
+    /* margin: 70px; */
+}
+.img1{
+    width: 30px;
+}
+.img2{
+    width: 100px;
+    height: 70px;
+}
+.lbl1{
+    /* font-weight: bold; */
+    font-size: large;
+}
+/* Email Input Field */
+.email-input {
+display: inline;
+width: 200px;
+text-align: left;
+padding: 13px;
+border-radius: 20px;
+background-color: #2E3A2F; /* Dark green background */
+/* color: #fff; */
+/* font-size: 18px; */
+}
+
+.email-input::placeholder {
+color: #fff; /* Placeholder text color */
+}
+
+/* Send Button */
+.send-button {
+background-color: #FF0000; /* Red button background */
+color: #fff; /* White text color */
+border: none;
+border-radius: 20px;
+padding: 13px 20px;
+font-size: 16px;
+cursor: pointer;
+position: absolute;
+left: 246px;
+top: 488px;
+}
+
+/* Hover effect for button */
+.send-button:hover {
+background-color: #CC0000; /* Slightly darker red on hover */
+}
+
+span{
+color: white;
+}
+
+@media screen and (max-width: 700px){
+    /* Email Input Field */
+.email-input {
+    display: inline;
+    width: 200px;
+    text-align: left;
+    padding: 13px;
+    border-radius: 20px;
+    background-color: #2E3A2F; /* Dark green background */
+    /* color: #fff; */
+    /* font-size: 18px; */
+    }
+    
+    .email-input::placeholder {
+    color: #fff; /* Placeholder text color */
+    }
+    
+    /* Send Button */
+    .send-button {
+    background-color: #FF0000; /* Red button background */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 20px;
+    padding: 13px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    left: 246px;
+    top: 488px;
+    }
+    
+    /* Hover effect for button */
+    .send-button:hover {
+    background-color: #CC0000; /* Slightly darker red on hover */
+    }
+}

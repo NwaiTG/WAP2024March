@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/post" method="post">
+        <!-- {model:'', manufactures:['Audi','Acura','BMW'], years:['2020','2021']} -->
+        Model: <input name="txt_model" value="<%= model %>"><br><br>
+        Manufacture: <select name="rad_make">
+            <% for (let i = 0; i < manufactures.length; i++){ let make = manufactures[i]%>
+                <option <%= make === manuS ? 'selected' : '' %>><%= make %></option>
+            <% } %>
+        </select><br><br>
+
+        <div>Make: 
+            <% for(let i = 0; i < years.length; i++){%>
+                <input type="radio" name="rd_year" value='<%= years[i] %>' <%= years[i] === yearS ? 'checked' : '' %>><%= years[i] %></input>
+            <% } %>
+        </div>
+        <input type="submit">
+    </form>
+</body>
+</html>

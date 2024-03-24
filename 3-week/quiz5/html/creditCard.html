@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/submitCredit" method="post">
+        <div
+            style="padding: 20px; border: 1px solid blue; border-radius: 20px; width: 400px; display: grid; grid-template-columns: 1fr 1fr;">
+            <div>
+                <input type="radio" name="ccType" value="master"> Master Card
+            </div>
+            <div>
+                <input type="radio" name="ccType" value="visa"> Visa
+            </div>
+            <div><label>Card Number</label></div>
+            <div>
+                 <input type="number" name="cardNumber" />
+            </div>
+            <div>
+                <label>Expiration date</label>
+            </div>
+            <div><select name="month" id="monthId">
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                </select>
+
+                <select name="year" id="yearId">
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                </select>
+            </div>
+
+            <button>Submit OTP</button>
+        </div>
+    </form>
+</body>
+
+</html>

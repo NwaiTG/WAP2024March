@@ -1,0 +1,69 @@
+1. Show the exam.html page when the User hits the landing page('/')
+
+2. When User enters the data and clicks on the submit post to the ("/post") url 
+
+3. Display '/preview' page with all the User entered details. 
+
+4. Put the request handlers in a separate file , say handlers.js and use them in the app.js file
+
+5. Display the page hit count(number of times User clicked on the landing page) in the Preview page. 
+
+==========================
+1. Display Guess Number page '/' i.e. as landing page.
+
+Correct Number is '9'
+
+2. When User types any another number than '9', display the same page if number of attempts is <=2. For 3rd attempt, show start over page.
+
+3. Show 404 when User keys in any another url than '/'
+
+4. Put the route '/' in separate router file.
+==========================
+
+1. Show index.html on landing Page('/').
+
+2. When Users enters the data and submits the page
+
+a.   If User enters anything other than number in the text field, show index.html
+
+b.  If User enters odd number and selects 'Even'  OR User enters even number and selects 'Odd' display Error Page ( Error handler should display)
+
+c. For right data, i.e. Even number with even selection and odd Number with odd selection, display history.
+
+History  should be displayed in this fashion, lets say inputs are 
+
+2  Even, 3  Odd, 5 Odd, 6 Even 
+
+{ 2:'Even', 3: 'Odd', 5:'Odd', 6:'Even'} 
+
+ORDER doesnt matter
+
+=====================
+
+1. Show login.html on landing url('/')
+
+2. When User enters either guest/guest or owner/owner as username/password, show view.html
+
+2 b. If Login is unsuccessful, show Error Page.
+
+3. When the Category is selected, check if the User has the role to view the page
+
+let myArray = {guest:['Nuts',"Legumes"],
+
+owner:['Vegetables','Nuts','Fruits',"Legumes"]}
+
+a. If the User has access, show the message, "welcome to "<category>
+
+b. If the User doesnt have access, show 'Unauthorized'
+
+4. Show '404' when the User tries to request any other url than what server has
+
+5. Use multiple post handlers for showing the 3a. where one handler checks if the User has access to the page and the other will actually show the page. 
+=====================================================
+1. Watch 2 videos
+
+2. Validation should be done in different handler(other than post handler) and should redirect to the error page. Error Handler should display the message that is shown. 
+
+3. Write the routes in separate file and include it in server file
+
+4. 404 Page should be displayed when User types in url that is not present.

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- let skillset = {
+        java: { "Core Java": 10, "Java Build Tools": ['Apache', 'SonaType'] },
+        javascript: { "HTML/CSS": 10, "Source Control": ['SVN', 'Mercurial'] }
+        } -->
+    <form action="/lanChoose" method="post">
+        <h2>Choose Language</h2>
+        <div>
+        <% for(let key in data) { %>
+            <input type="radio" name="rad_lan" value="<%= key %>"><%= key %></input>
+        <% } %>
+        </div><br>
+        <input type="submit">
+    </form>
+</body>
+</html>

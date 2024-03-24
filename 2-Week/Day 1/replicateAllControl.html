@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(function() {
+            let myDiv = $("<div></div>");
+            myDiv.html('<label>Name </label><input type="text"/>');
+            $('body').append(myDiv);
+
+            myBreakL = $("<br>");
+
+            $('body').append(myBreakL);            
+
+            let myTextArea = $("<div></div>")
+            myTextArea.html('<label>Description </label>' + '<textarea >Description</textarea><br>');
+
+            myBreakL.after(myTextArea);
+
+            let myCountry = $("<div></div><br>");
+            myCountry.html('<label>Country: </label>' + '<select><option>USA</option><option>Canada</option></select>');
+            // myTextArea.after(myCountry);
+            $('body').append(myCountry);
+            
+            let myAddress = $("<div></div><br>");
+            myAddress.html('<label>Address: </label>' + '<select multiple><option>Home</option><option selected>Office</option></select>');
+            // myCountry.after(myAddress);
+            $('body').append(myAddress);
+            
+            let myGender = $("<div></div><br>");
+            myGender.html('<label>Gender</label>' + '<input name="opt" type="radio" checked>Male</input><input name="opt" type="radio" selected>Female</input>');
+            // myAddress.after(myGender);
+            $('body').append(myGender);
+            
+            let mySkill = $("<div></div>");
+            mySkill.html('<label>Skills</label>' + '<input type="checkbox" checked>Java</input><input type="checkbox" checked>Javascript</input>');
+            // myGender.after(mySkill);
+            $('body').append(mySkill);
+
+        })
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

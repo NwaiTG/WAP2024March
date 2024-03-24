@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!-- let products = [{
+    img: 'https://m.media-amazon.com/images/I/71SKXw+9tCL._AC_SX679_.jpg',
+    name: 'Winter Hanging Decor', price: '42'
+    },
+    {
+    img: 'https://m.media-amazon.com/images/I/81Kng7krTwL._AC_SX679_.jpg',
+    name: 'Fall Hanging Decor', price: '50'
+    }]; -->
+    <form action="/post" method="post">
+        <% for(let i = 0; i < products.length; i++) { let prod = products[i]%> 
+            <input type="checkbox" name="chk" value="<%= prod.name%>">
+            <div style="border: 1px solid blue;width: 200px;">
+                <label><%= prod.name %></label><br>
+                <label><%= prod.price %></label><br>
+                <img style="width: 50px; height: 50px;" src='<%= prod.img %>'>
+            </div><br>
+        <% } %>  
+        <br>
+        <input type="submit"><br><br>
+
+        <h4>My Cart</h4>
+
+        <div style="border: 1px solid blue;width: 200px;">
+            <% for(let i = 0; i < selectedProds.length; i++) { %>
+                <label><%= selectedProds[i].name %>  <%= selectedProds[i].count %></label><br>
+            <% } %><br><br>
+            <label><%= tot_price %></label><br>
+        </div>     
+    </form>
+    
+</body>
+</html>

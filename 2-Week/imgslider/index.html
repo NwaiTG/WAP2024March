@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+
+        $(document).ready(function(){
+        let idx = 0;
+        let isplayed=false
+
+        let id;
+        let timerid;
+        let array1 = [3,0,1,2]
+        let array2 = [2,3,0,1]
+        let array3 = [1,2,3,0]
+        let array4 = [0,1,2,3]
+
+        function startinterval(){
+            timerid = setInterval(function(){
+            $('#div1').html('<img class="img" id="img1" src="./images/images/'+array1[idx%4]+'.png"/>')
+            $('#div2').html('<img class="img" id="img2" src="./images/images/'+array2[idx%4]+'.png"/>')
+            $('#div3').html('<img class="img" id="img3" src="./images/images/'+array3[idx%4]+'.png"/>')
+            $('#div4').html('<img class="img" id="img4" src="./images/images/'+array4[idx%4]+'.png"/>')
+            idx++
+         },2000)
+        }
+
+        $(document).on('click', '.imgs', function(){
+            id = this.id[3]
+            console.log("clicked")
+
+            console.log('this is on click'+id)
+            let html = '<video class="img" muted id="vid'+id+'" controls><source src="./images/images/'+(id-1)+
+                '.mp4" type="video/mp4"></video>'
+            console.log(html)
+
+            setTimeout(function(){
+                isplayed=true
+
+                $('#div'+id).html(html)
+                $('#vid'+id).trigger('play')
+            },1000)
+        })
+
+
+         $('#container').mouseover(function(){
+            console.log("moseover")
+           clearInterval(timerid)
+         });
+
+         $('#container').mouseout(function(){
+            console.log('This is on mouseout'+id)
+            if(isplayed) {
+                $('#div'+id).html('<img class="img" id="img'+id+'" src="./images/images/'+(id-1)+'.png"/>')
+                isplayed=false
+            }
+
+            startinterval()
+         })
+
+         startinterval()
+
+        })
+
+        $(document).ready(function () {
+        const words = "Welcome to the movies world!!!";
+        let idx = 1;
+        let dir = 1;
+
+        $('#lbl_word').text(words);
+
+        setInterval(function () {
+            let wid = $(window).width();
+            console.log(wid);
+            // if (idx <= 100 && dir === 1) {
+            if (idx <= wid-398 && dir === 1) {
+                console.log(idx);
+                $('#lbl_word').css("margin-left", ++idx + "px");
+            } else if (idx >= 2 && dir === -1) {
+                console.log("back", idx);
+                $('#lbl_word').css("margin-left", --idx + "px");
+            } else {
+                console.log("back2", idx);
+                dir *= -1;
+            }
+            }, 15);
+        });
+    </script>
+</head>
+<style>
+    .word {
+            position: absolute;
+        }
+
+    body{
+        background-color: black;
+    }
+    .img {
+            border-radius: 20px;
+            width: 20em;
+            height: 9em;
+            max-width: 100%;
+            object-fit: cover;
+    }
+    video{
+
+            width: 17em;
+            height: 14em;
+            max-width: 100%;
+            object-fit: cover;
+    }
+
+    .cls_image_img {
+            max-width: 100%;
+            width: 100%;
+            height: 25em;
+            object-fit: cover;
+            align-content: center;
+            align-items: center;
+        }
+    .img:hover {
+        transform: scale(1.7);
+        cursor: pointer;
+    }
+
+
+</style>
+<body>
+    <div id="main_img_div">
+        <img id="main_img" class="cls_image_img" src="./images/images/main_3.PNG">
+    </div>
+    <div style="background-color:black; height: 25px;">
+        <label id="lbl_word" style="color: #FCCD09;font-size: 18px;"></label>
+        <!-- <label id="lbl_word" style="color: #E2D0C4;font-size: 18px;"></label> -->
+    </div>
+    
+    <div id ="container" style="display: flex; gap:20px;">
+        <div class="imgs" id="div1" ><img  id="img1" class="img"  src="./images/images/0.png"></div>
+        <div class="imgs" id="div2"><img id="img2" class="img" src="./images/images/1.png"></div>
+        <div class="imgs" id="div3"><img id="img3" class="img"  src="./images/images/2.png"></div>
+        <div class="imgs" id="div4"><img id="img4" class="img" src="./images/images/3.png"></div>
+    </div>
+
+</body>
+</html>

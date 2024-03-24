@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid-container{
+            display: grid;
+            grid-template-columns: auto auto;
+            /* grid-column-start: 2;
+            grid-column-end: 3; */
+            grid-row-start: 2;
+            grid-row-end: 3;
+            border: 1px solid black;
+        }
+        .flex-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+        }
+        .flex-container > div{
+            font-size: 17px;
+        }
+        .grid-container-item{
+
+        }
+        .img1{
+            width: 150px;
+            height: 250px;
+            max-width: 100%;
+            object-fit: cover;
+        }
+        .img2{
+            width: 80px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;top: 200px; right: 730px; z-index: 3;
+        }
+        @media screen and (max-width: 600px){
+            .grid-container{
+            display: grid;
+            grid-template-columns: auto auto;
+            /* grid-column-start: 2;
+            grid-column-end: 3; */
+            grid-row-start: 2;
+            grid-row-end: 3;
+            border: 1px solid black;
+        }
+        .flex-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+        }
+        .flex-container > div{
+            font-size: 17px;
+        }
+        .grid-container-item{
+
+        }
+        .img1{
+            width: 150px;
+            height: 250px;
+            object-fit: cover;
+            max-width: 100%;
+        }
+        .img2{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            max-width: 100%;
+
+            position: absolute;top: 200px; right: 730px; z-index: 3;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div style="margin-left: 20%; margin-right: 20%;top: 100px;">
+        
+        <div style="float: left;margin-right: 20px;display: flex; flex-direction: column;">            
+            <img class="img1" src="./images/chrysanthumum.jpeg" style="position: relative;left: 0;top: 0;">
+        </div>
+        <div class="flex-container" style="margin-right: 20px;">        
+            <div>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore maiores itaque quasi nulla sunt nemo, 
+                    deserunt adipisci amet dolorum in minima facere, maxime at laboriosam cumque ducimus culpa. Maiores, tempora.
+            </div>
+            <div>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem similique tempore commodi quas optio nisi minima, 
+                    nihil totam. Id et dolorem sit pariatur minus commodi neque perferendis expedita, corrupti magni.
+            </div>        
+        </div>
+        <div style="height: 100px;"></div>
+        <div style="width: 800px;border: 1px solid blue; margin-left: 195px;">
+                <img class="img2" src="./images/chrysanthumum.jpeg">
+                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                    Error quasi ipsam dignissimos voluptatibus praesentium culpa harum eligendi porro deserunt in? Dolores cupiditate eos ipsam perferendis? Consectetur asperiores ex et nostrum!
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                    Error quasi ipsam dignissimos voluptatibus praesentium culpa 
+                    harum eligendi porro deserunt in? Dolores cupiditate eos ipsam perferendis? Consectetur asperiores ex et nostrum!</div>
+        </div>
+    </div>
+</body>
+</html>

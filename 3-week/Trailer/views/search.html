@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Showtimes Search</title>
+</head>
+<body>
+    <h1>Find Movie Showtimes</h1>
+    <form action="/showtimes" method="GET">
+        <div>
+            <label for="movieTitle">Movie Title:</label>
+            <input type="text" id="movieTitle" name="movieTitle" required>
+        </div>
+        <div>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+        </div>
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>

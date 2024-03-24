@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function bookSeat(){
+            $('#id_form').attr("action","/book");
+            $('#id_form').submit();
+        }
+
+        $(()=>{
+            // console.log($('#hid_action').val());
+            if($('#hid_action').val() === 'add'){
+                $('#div_seat').hide();
+            }else if($('#lbl_msg').text() !== "" || $('#lbl_fail').text() !== ""){
+                $('#div_seat').hide();
+            }else  
+                $('#div_seat').show();
+        })
+    </script>
+</head>
+<body>
+    <form id="id_form" action="/search" method="post">
+        <h2>Book a Ticket</h2>
+        <label id="lbl_msg" style="color: goldenrod;font-size: 15px;"><%=msg_succ%></label><br>
+        <input type="hidden" value="<%=hid_action%>" id="hid_action" name="hid_seat">
+        <input type="hidden" value="<%=seat%>" id="hid_seat" name="hid_seat">
+        Departure Date: <input type="date" name="txt_date" value="<%= sel_date%>"><br>
+        Destination: <select name="sel_dest">
+            <option value="<%=sel_dest === 'Fairfield' ? 'selected' : ''%>">Fairfield</option>
+            <option value="<%=sel_dest === 'Chicago' ? 'selected' : ''%>">Chicago</option>
+        </select><br>
+        <input type="submit" value="Search">
+        <label id="lbl_fail" style="color: red;"><%=msg_fail%></label>
+
+        <div id="div_seat">
+            <lable id="lbl_seat">Available Seat</lable>
+            <lable id="lbl_seat"><%=seat%></lable><br>
+            <lable>No of Seat: </lable>
+            <select name="sel_seat">
+                <% for (let i = 1; i <= seat; i++){%>
+                    <option><%=i%></option>
+                <%} %>
+                <!-- <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option> -->
+            </select>
+            <br>
+            <input type="button" onclick="bookSeat(this)" value="Book Now"><br>
+        </div>   
+    </form>
+</body>
+</html>

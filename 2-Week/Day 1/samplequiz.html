@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        let list = []; let count = 0;
+        // function show(){
+            $(function(){
+            $("#btnAdd").remove();
+            let mainDIV = $("<div></div>")
+            let form = "<label>Name</label><input type='text' id='txtName'></input><br>" + 
+            "<label>Location</label><select multiple><option name='country' value='USA'>USA</option>" + 
+            "<option name='country' value='Canada'>Canada</option>" + "<option name='country' value='Italy'>Italy</option></select><br>" +
+            "<button id='btnSubmit' onclick='submit()'>Submit</button><button id='btnFindAll' onclick='findall()'>Find All</button>" +
+            "<button id='btnFindByCountry' onclick='findbyCountry()'>Find By Country</button>"
+            mainDIV.append(form);
+            $('body').append(mainDIV);
+        // }
+    })
+
+        function findbyCountry(){
+            $("lblMsg").hide();
+
+            let search = $("[name='country']:selected").val();
+            alert(search);
+            let sUsers = list.filter((user) => {
+                return user.country.includes(search);
+            })
+
+            let names = sUsers.map(user => user.name);
+
+            let n = "";
+
+            for(let i = 0; i < names.length; i++){
+                if(n == "")
+                    n = names[i];
+                else
+                    n += ", " + names[i];
+            }
+
+            $("#btn-Add").append("<div>" + n + "</div>");
+        }
+
+        // function displayUser(usr) {
+        //     let message = $('#result');
+        //     let html = '<b>';
+        //     for (const key in usr) {
+        //         for (let country in usr[key]) {
+        //             html += usr[key][country] + ' ';
+        //         }
+        //         html += '<br/>';
+        //     }
+        //     message.html(html);
+        // }
+
+        // function findAll() {
+        //     displayUser(users);
+        // }
+
+        function findall(){
+            $("lblMsg").hide();
+
+            // let all = list.map(user => user.name + " " + user.country);
+            // console.log(all);
+
+            // for(let i = 0; i < all.length; i++){
+            //     $("#btn-Add").append("<div>" + all[i] + "</div>");
+            // }
+
+            for(let i = 0; i < list.length; i++){
+                let name = "";
+                let country = "";
+                for(let ele in list[i]){
+                    name += list[i][ele] + " ";
+                    // alert(ele);
+                    // if(Array.isArray(ele)){
+                    //     for(let j = 0; j < list[i][ele].length; j++){
+                    //         if(country == "")
+                    //             country = list[i].country;
+                    //         else
+                    //             country += ", " + list[i].country;
+                    //     }
+                    // }
+                    // name = list[i].name;
+                    // console.log('name', name);
+                    // console.log("country", country);
+                }
+                console.log(name);
+                $("#btn-Add").append("<div>" + name + " " + country + "</div>");
+            }
+
+
+        }
+
+        function submit(){
+            count++;
+            let obj = {};
+            let cty = "";
+            obj['name'] = $("#txtName").val();
+
+            $("[name='country']:selected").each(function(idx,ele){
+                // cty.push(ele.textContent);
+                if(cty == "")
+                    cty = ele.textContent;
+                else
+                    cty += ", " + ele.textContent;
+            })
+            obj['country'] = cty;
+            list.push(obj);
+
+            $("#lblMsg").text("Added " + count + " User(s)");
+        }
+    </script>
+</head>
+<body>
+    <div id="btn-Add">
+        <label id="lblMsg"></label>
+        <button id="btnAdd" onclick="show()">Add</button>
+    </div>
+</body>
+</html>
